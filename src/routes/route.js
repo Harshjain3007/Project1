@@ -26,5 +26,10 @@ router.delete('/blogs', mid.authenicate, blogcontroller.deletequery)
 //Author login API using valid email id and password
 router.post('/login', authorController.authorLogin)
 
+router.all("/*", function (req, res) {
+    res
+      .status(404)
+      .send({ status: false, msg: "The api you requested is not available" });
+  });
 
 module.exports = router
